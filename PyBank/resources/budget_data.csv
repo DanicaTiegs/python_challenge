@@ -6,6 +6,3 @@ csvpath=os.path.join('..','homework','03-Python_HW_Instructions_PyBank_Resources
 with open(csvpath) as csvfile:
   csvreader = csv.reader(csvfile, delimiter-',')
   print(csvreader)
-  
-
-
