@@ -10,8 +10,6 @@ with open(csv_path) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv.header = next(csvreader)
 
-#The total number of votes cast
-
     for row in csvreader:
         total_votes = total_votes + 1
         if row[2] not in candidates:
@@ -33,4 +31,11 @@ print("--------------------")
 print(f"Winner: {winner}")
 print("--------------------") 
 
-csvreader.to_txt("Analysis/Analysis.txt")
+#how to define outpath?
+with open(outpath, "w") as textfile:
+    textfile.write("election results")
+    textfile.write("--------------------")
+    textfile.write("Total Votes: {total_votes}")
+    textfile.write("--------------------")
+    textfile.write(f"Winner: {winner}")
+    # how to put the txt file outpath in Analysis folder?

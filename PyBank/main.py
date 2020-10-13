@@ -6,8 +6,6 @@ csv_path = os.path.join("Resources","03-Python_HW_Instructions_PyBank_Resources_
 with open(csv_path) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     csv.header = next(csvreader)
-    #for row in csvfile:
-        #print (row)
 
     month_count=0
     month_total = 0 
@@ -38,9 +36,16 @@ with open(csv_path) as csvfile:
     print("--------------------")
     print(f"Total Months: {month_count}")
     print(f"Total: {month_total}")
-    print(f"Average Change: ${total_change/(month_count - 1)}")
+    print(f"Average Change: ${total_change/(month_count - 1):.2f}")
     print(f"Greatest Increase Profits: {greatest_month} (${greatest_profit})")
     print(f"Greatest Decrease: {lowest_month} (${greatest_loss})")
 
-
-
+with open(outpath, "w") as textfile:
+    textfile.write("financial analysis")
+    textfile.write("--------------------")
+    textfile.write(f"Total Months: {month_count}")
+    textfile.write(f"Total: {month_total}")
+    textfile.write(f"Average Change: ${total_change/(month_count - 1)}")
+    textfile.write(f"Greatest Increase Profits: {greatest_month} (${greatest_profit})")
+    textfile.write(f"Greatest Decrease: {lowest_month} (${greatest_loss})")
+# how to define outpath?
