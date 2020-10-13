@@ -32,3 +32,5 @@ for candidate in candidates:
 print("--------------------")        
 print(f"Winner: {winner}")
 print("--------------------") 
+
+csvreader.to_txt("Analysis/Analysis.txt")
