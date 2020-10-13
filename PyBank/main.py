@@ -40,12 +40,19 @@ with open(csv_path) as csvfile:
     print(f"Greatest Increase Profits: {greatest_month} (${greatest_profit})")
     print(f"Greatest Decrease: {lowest_month} (${greatest_loss})")
 
-with open(outpath, "w") as textfile:
+output_path = os.path.join("Analysis", "Analysis.txt")
+with open(output_path, "w") as textfile:
     textfile.write("financial analysis")
+    textfile.write("\n")
     textfile.write("--------------------")
+    textfile.write("\n")
     textfile.write(f"Total Months: {month_count}")
+    textfile.write("\n")
     textfile.write(f"Total: {month_total}")
+    textfile.write("\n")
     textfile.write(f"Average Change: ${total_change/(month_count - 1)}")
+    textfile.write("\n")
     textfile.write(f"Greatest Increase Profits: {greatest_month} (${greatest_profit})")
+    textfile.write("\n")
     textfile.write(f"Greatest Decrease: {lowest_month} (${greatest_loss})")
-# how to define outpath?
+

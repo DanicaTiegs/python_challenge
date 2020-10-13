@@ -32,10 +32,19 @@ print(f"Winner: {winner}")
 print("--------------------") 
 
 #how to define outpath?
-with open(outpath, "w") as textfile:
+
+output_path = os.path.join("Analysis", "Analysis.txt")
+with open(output_path, "w") as textfile:
     textfile.write("election results")
+    textfile.write("\n")
     textfile.write("--------------------")
-    textfile.write("Total Votes: {total_votes}")
+    textfile.write("\n")
+    textfile.write(f"Total Votes: {total_votes}")
+    textfile.write("\n")
     textfile.write("--------------------")
+    textfile.write("\n")
+    # How do I have an iteration print out correctly in textfile?
+    textfile.write(f"{candidate} {(candidates[candidate]/total_votes) * 100:.2f}% {candidates[candidate]} ")
+    textfile.write("\n")
     textfile.write(f"Winner: {winner}")
-    # how to put the txt file outpath in Analysis folder?
+   
