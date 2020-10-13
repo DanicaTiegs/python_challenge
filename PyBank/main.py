@@ -9,37 +9,38 @@ with open(csv_path) as csvfile:
     #for row in csvfile:
         #print (row)
 
-#The total number of months included in the dataset
+    month_count=0
+    month_total = 0 
+    previous = 0
+    total_change = 0
+    greatest_profit = 0 
+    greatest_loss = 99999999999 
+    greatest_month = ""
+    lowest_month = ""
+    
 
-data=list(csvreader)
-    row_count = len(data)
-
-month_total = []
-for row in csvreader:
-    values = row[1]
-    month_total.append(values)
-print (month_total)
-
-#The net total amount of "Profit/Losses" over the entire period
-
-profits_losses = []
-for row in csvreader:
-    for column in row:
-        values = row[1]
-        profits_losses.append(values)
-print(profits_losses)
-
-#The average of the changes in "Profit/Losses" over the entire period
-
-profits_losses = []
-for row in csvreader:
-    for column in row:
-        values = row[1]
-        profits_losses.append(values)
-print(profits_losses)
+    for row in csvreader:
+        #pybank_data[row[0]] = months
+        month_count = month_count + 1 
+        month_total = month_total + int(row[1])
+        current = int(row[1])
+        change = current - previous
+        if month_count > 1:
+            total_change = total_change + change
+            if change > greatest_profit:
+                greatest_profit = change
+                greatest_month = row[0]
+            if change < greatest_loss:
+                greatest_loss = change
+                lowest_month = row[0]
+        previous = int(row[1])
+    print("financial analysis")
+    print("--------------------")
+    print(f"Total Months: {month_count}")
+    print(f"Total: {month_total}")
+    print(f"Average Change: ${total_change/(month_count - 1)}")
+    print(f"Greatest Increase Profits: {greatest_month} (${greatest_profit})")
+    print(f"Greatest Decrease: {lowest_month} (${greatest_loss})")
 
 
-#The greatest increase in profits (date and amount) over the entire period
 
-
-#The greatest decrease in losses (date and amount) over the entire period
